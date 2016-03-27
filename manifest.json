@@ -1,0 +1,10 @@
+{
+  "short_name": "HH Timer",
+  "name": "Doot Doot Hunting Horn Timer",
+  "version": "1.0",
+  "manifest_version": 2,
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": { "16": "hh.png", "128": "hh.png" }
+}
