@@ -193,8 +193,19 @@ function superreset() {
     }
 }
 
+function togglepause() {
+    var pausebutton = document.getElementById("pause");
+    if (pausebutton.getAttribute("value") === "Resume") {
+        pausebutton.setAttribute("value", "Pause");
+    } else {
+        pausebutton.setAttribute("value", "Resume");
+    }
+}
+
 function starttimers() {
     setInterval(function () {
+        var pausebutton = document.getElementById("pause");
+        var decrement = pausebutton.getAttribute("value") === "Resume" ? 0 : 1;
         var progresses = document.getElementsByTagName("progress");
         var len = progresses.length;
         for (var i = 0; i < len; i++) {
@@ -203,9 +214,9 @@ function starttimers() {
             var value = p.getAttribute("value");
             if (value > 0) {
                 cleartable(ps);
-                p.setAttribute("value", value - 1);
-                setProgressSpanValue(ps, value - 1);
-                if (value == 1) {
+                p.setAttribute("value", value - decrement);
+                setProgressSpanValue(ps, value - decrement);
+                if (p.getAttribute("value") == 0) {
                     // just went to 0, play a sound effect
                     var hassound = document.getElementById("soundfx").checked ? 1 : 0;
                     var hasvoice = document.getElementById("voicefx").checked ? 1 : 0;
