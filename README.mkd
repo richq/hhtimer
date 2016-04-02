@@ -2,7 +2,7 @@ Hunting Horn Timer, useful for cheating on Monster Hunter 4 Ultimate.
 
 ## Quick start guide
 
-1. open this page on your phone
+1. open [this page](http://richq.github.io/hhtimer) on your phone
 2. load up Monster Hunter on your 3DS
 3. pick a hunting horn weapon in the game, like Rinforzato
 4. choose the same notes on the timer page, it'll show the song list
