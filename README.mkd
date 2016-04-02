@@ -1,0 +1,41 @@
+Hunting Horn Timer, useful for cheating on Monster Hunter 4 Ultimate.
+
+## Quick start guide
+
+1. open this page on your phone
+2. load up Monster Hunter on your 3DS
+3. pick a hunting horn weapon in the game, like Rinforzato
+4. choose the same notes on the timer page, it'll show the song list
+5. bash a monster / play some notes <span style="color:purple">♪</span><span style="color:red">♪</span><span style="color:blue">♪</span><span style="color:purple">♪</span>
+6. perform a recital with R
+7. during the recital, tap the song name on your phone to start the timer
+
+That's it! When the timer runs low, you know you have to replay the song.
+When you recite another tune, tap that song name.
+
+## Features/Oddities
+
+The duration of a buff can never go over the initial time.  Playing a
+song a second time will only top up its timer, though some songs do add
+additional benefits. The additional benefit is not shown in this timer in any
+way, however.
+
+Melody Duration Extended is implemented and I think works correctly by boosting
+the time of all currently active songs.
+
+## Game-Play Tips
+
+Some songs - like the "Self Improvement" or Attack Boost - have extend periods
+that are less than the time the buff lasts the first time you play it.  This
+means that if you're almost out of time, it might be worth playing an encore to
+get the buff back up to its full time. Usually these songs have boosted effects
+when they are played more than once. It's worth trying to avoid having the
+effect for these buffs run out completely or you will have to play the song
+twice to get back the full effect.
+
+A lot of songs have no advantage to playing encores - Divine Protection and
+several of the effect-negation songs are like this.  In these cases there's no
+difference between playing the song with near full time left, a few seconds
+left, or playing it again once it completely runs out. In other words: try to
+avoid spamming songs like these, it is a waste of time and gives no extra
+benefit.

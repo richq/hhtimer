@@ -1,4 +1,5 @@
 var notecolors = {
+    "W": "white",
     "P": "purple",
     "C": "cyan",
     "R": "red",
@@ -7,12 +8,25 @@ var notecolors = {
     "G": "green",
     "Y": "yellow"
 };
+
+var DANGER_LEVEL = 15;
+
 function getsongs(notes) {
-    var len = data.melodies.length;
+    var len = melodies.length;
     for (var i = 0; i < len; i++) {
-        var songs = data.melodies[i].songs;
-        if (notes === data.melodies[i].notes)
+        var songs = melodies[i].songs;
+        if (notes === melodies[i].notes)
             return songs;
+    }
+    return [];
+}
+
+function getexamples(notes) {
+    var len = melodies.length;
+    for (var i = 0; i < len; i++) {
+        var examples = melodies[i].examples;
+        if (notes === melodies[i].notes)
+            return examples;
     }
     return [];
 }
@@ -23,45 +37,114 @@ function cleartable(tbody) {
     }
 }
 
-function melodyDurationExtended(tbody, time) {
-    var progresses = document.getElementsByTagName("progress");
-    var len = progresses.length;
-    for (var i = 0; i < len; i++) {
-        var p = progresses[i];
-        var value = parseInt(p.getAttribute("value"), 10);
-        var max = parseInt(p.getAttribute("max"), 10);
-        if (value == 0)
-            continue;
+function createMeter(id, value, max) {
+    /*
+     * <div style="padding:2px;background:#CCC;">
+     *   <span>25%</span>
+     *   <div style="width:25%;background:#F00;text-align:center;"></div>
+     * </div>
+    */
+    var outerdiv = document.createElement("div");
+    outerdiv.setAttribute("class", "progress");
+    var innerdiv = document.createElement("div");
+    innerdiv.setAttribute("class", "progress-bar");
+    innerdiv.setAttribute("role", "progressbar");
+    outerdiv.appendChild(innerdiv);
+    var span = document.createElement("span");
+    // span.setAttribute("class", "sr-only");
+    innerdiv.appendChild(span);
 
-        var newvalue = Math.min(value + time, max);
-        var ps = document.getElementById("ps_" + p.id);
-        updateProgress(p, ps, newvalue);
+    outerdiv.setAttribute("id", id);
+    outerdiv.setAttribute("aria-valuemax", max);
+    outerdiv.setAttribute("aria-valuemin", 0);
+    setValue(outerdiv, value);
+    return outerdiv;
+}
+
+function getMeters(scope) {
+    return scope.getElementsByClassName("progress");
+}
+
+function getMeterById(id) {
+    return document.getElementById(id);
+}
+
+function getValue(meterDiv) {
+    return parseInt(meterDiv.getAttribute("aria-valuenow"), 10);
+}
+
+function getMax(meterDiv) {
+    return parseInt(meterDiv.getAttribute("aria-valuemax"), 10);
+}
+
+function redoMeterLayout(meterDiv) {
+    var value = getValue(meterDiv);
+    var max = getMax(meterDiv);
+    var pc = Math.min(100, 100 * value / max);
+    var success = "progress-bar-success";
+    var danger = "progress-bar-danger";
+    if (value < DANGER_LEVEL && !$(meterDiv.firstChild).is(danger)) {
+        $(meterDiv.firstChild).removeClass(success).addClass(danger);
+    } else if (value >= DANGER_LEVEL && !$(meterDiv.firstChild).is(success)) {
+        $(meterDiv.firstChild).removeClass(danger).addClass(success);
+    }
+
+    var style = "width:" + pc + "%;";
+    meterDiv.firstChild.setAttribute("style", style);
+    var spans = meterDiv.getElementsByTagName("span");
+    var span = spans[0];
+    if (!span.firstChild) {
+        span.appendChild(document.createTextNode(value));
+    } else {
+        spans[0].firstChild.data = value;
     }
 }
 
-function setProgressSpanValue(ps, newvalue) {
-    cleartable(ps);
-    ps.setAttribute("x", newvalue);
-    ps.appendChild(document.createTextNode(pad(newvalue, 3)));
+function setMax(meterDiv, newmax) {
+    meterDiv.setAttribute("aria-valuemax", newmax);
+    redoMeterLayout(meterDiv);
 }
 
-function updateProgress(progress, ps, newvalue) {
-    progress.setAttribute("value", newvalue);
-    setProgressSpanValue(ps, newvalue);
+function setValue(meterDiv, newvalue) {
+
+    var oldval = getValue(meterDiv);
+    meterDiv.setAttribute("aria-valuenow", newvalue);
+    redoMeterLayout(meterDiv);
+    if (newvalue > oldval) {
+        // expanding? gotta go fast!
+        $(meterDiv.firstChild).addClass("progress-bar-fast");
+    } else {
+        $(meterDiv.firstChild).removeClass("progress-bar-fast");
+    }
+
+}
+
+function melodyDurationExtended(tbody, time) {
+    var progresses = getMeters(document);
+    var len = progresses.length;
+    for (var i = 0; i < len; i++) {
+        var p = progresses[i];
+        var value = getValue(p);
+        if (!value)
+            continue;
+
+        var max = getMax(p);
+        var newvalue = Math.min(value + time, max);
+        setValue(p, newvalue);
+    }
 }
 
 function extend(notes, time, extendtime) {
-    if (time == 0)
+    if (!time)
         return;
-    var progress = document.getElementById("timer_" + notes);
+    var progress = getMeterById("timer_" + notes);
     var tbody = progress.parentNode.parentNode.parentNode;
-    var ps = document.getElementById("ps_" + progress.id);
-    var currvalue = parseInt(progress.getAttribute("value"), 10);
+    var currvalue = getValue(progress);
     var newvalue = time;
     if (currvalue > 0 && extendtime > 0) {
         newvalue = Math.min(currvalue + extendtime, time);
     }
-    updateProgress(progress, ps, newvalue);
+    setValue(progress, newvalue);
 
     if (tbody.getAttribute("notes") === "PRO" && time <= 40) {
         // special song - affects all current songs
@@ -79,8 +162,16 @@ function maestrochange(ent) {
     for (var i = 0; i < len; i++) {
         var row = rows[i];
         setSongRowTime(row, songs[i], hasmaestro);
-        var progress = row.getElementsByTagName("progress");
-        progress[0].setAttribute("max", songs[i].time[hasmaestro]);
+        var progress = getMeters(row);
+        var currval = getValue(progress[0]);
+        var currmax = getMax(progress[0]);
+        var newmax = songs[i].time[hasmaestro];
+        setMax(progress[0], newmax);
+        if (!hasmaestro && currval > newmax) {
+            var used = Math.max(0, currmax - currval);
+            var newval = Math.max(0, newmax - used);
+            setValue(progress[0], newval);
+        }
     }
 }
 
@@ -90,12 +181,14 @@ function setSongRowTime(tr, thissong, hasmaestro) {
         extendtime = thissong.extend[hasmaestro];
     }
     var key = thissong.combos[0];
+    /* jshint -W014 */
     tr.setAttribute("onclick",
                     "extend('"
                             + key + "', "
                             + thissong.time[hasmaestro]
                             + ", " + extendtime
                             + ")");
+    /* jshint +W014 */
 }
 
 function showtable(notes) {
@@ -104,12 +197,16 @@ function showtable(notes) {
     cleartable(tbody);
     var currsel = document.getElementById("currentselection");
     cleartable(currsel);
+    var examples = getexamples(notes);
     appendcolourednotes(currsel, notes);
+    var caret = document.createElement("span");
+    caret.setAttribute("class", "caret");
+    currsel.appendChild(document.createTextNode(" " + examples + " "));
+    currsel.appendChild(caret);
     tbody.setAttribute("notes", notes);
     var songs = getsongs(notes);
     var len = songs.length;
     for (var i = 0; i < len; i++) {
-        // add something...
         var thissong = songs[i];
         var tr = document.createElement("tr");
         setSongRowTime(tr, thissong, hasmaestro);
@@ -127,18 +224,9 @@ function showtable(notes) {
         tr.appendChild(td);
 
         td = document.createElement("td");
-        var progress = document.createElement("progress");
-        var key = thissong.combos[0];
-        progress.setAttribute("id", "timer_" + key);
-        progress.setAttribute("max", thissong.time[hasmaestro]);
-        progress.setAttribute("value", 0);
+        var id = "timer_" + thissong.combos[0];
+        var progress = createMeter(id, 0, thissong.time[hasmaestro]);
         td.appendChild(progress);
-
-        var ps = document.createElement("span");
-        ps.setAttribute("id", "ps_timer_" + key);
-        ps.setAttribute("class", "progressspan");
-        setProgressSpanValue(ps, 0);
-        td.appendChild(ps);
 
         tr.appendChild(td);
 
@@ -156,71 +244,76 @@ function appendcolourednotes(appendto, notes) {
 }
 
 function showdata() {
-    var len = data.melodies.length;
+    var len = melodies.length;
     var select = document.getElementById("selectionlist");
+    var ul = select.getElementsByClassName("dropdown-menu")[0];
+    cleartable(ul);
+    var tryhardonly = document.getElementById("tryhard").checked ? 1 : 0;
     for (var i = 0; i < len; i++) {
-        var notes = data.melodies[i].notes;
-        var songs = data.melodies[i].songs;
-        var examples = data.melodies[i].examples;
+        var notes = melodies[i].notes;
+        var songs = melodies[i].songs;
+        var examples = melodies[i].examples;
+        if (tryhardonly && notes[0] === "W")
+            continue;
         // create a button for this one.
-        var inner = document.createElement("option");
-        inner.setAttribute("id", notes);
-        inner.setAttribute("value", notes);
-        var image = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='40px' width='100px'>";
-        for (var j = 0; j < notes.length; j++) {
-            image = image + "<text fill='" + notecolors[notes[j]] + "' x='" + (j * 10) + "' y='15' font-size='16'>\\266a</text>";
-        }
-        image = image + "</svg>";
-        var style = "background-image:url(\"" + image + "\"); text-align: right; background-repeat: no-repeat;";
-        inner.setAttribute("style", style);
+        var li = document.createElement("li");
+        var inner = document.createElement("a");
+        li.setAttribute("id", notes);
+        appendcolourednotes(inner, notes);
         inner.appendChild(document.createTextNode(" " + examples));
-        select.appendChild(inner);
+        li.appendChild(inner);
+        li.setAttribute("onclick", "showtable(this.id);");
+        ul.appendChild(li);
     }
-};
+}
 
-function pad(num, size) {
-    var s = "0000" + num;
-    return s.substr(s.length-size);
+function unpause() {
+    var pausebutton = document.getElementById("pause");
+    pausebutton.setAttribute("value", "Pause");
+}
+
+function pause() {
+    var pausebutton = document.getElementById("pause");
+    pausebutton.setAttribute("value", "Resume");
 }
 
 function superreset() {
-    var progresses = document.getElementsByTagName("progress");
+    var progresses = getMeters(document);
     var len = progresses.length;
     for (var i = 0; i < len; i++) {
         var p = progresses[i];
-        var ps = document.getElementById("ps_" + p.id);
-        updateProgress(p, ps, 0);
+        setValue(p, 0);
     }
+    unpause();
+}
+
+function ispaused() {
+    return document.getElementById("pause").getAttribute("value") === "Resume";
 }
 
 function togglepause() {
-    var pausebutton = document.getElementById("pause");
-    if (pausebutton.getAttribute("value") === "Resume") {
-        pausebutton.setAttribute("value", "Pause");
+    if (ispaused()) {
+        unpause();
     } else {
-        pausebutton.setAttribute("value", "Resume");
+        pause();
     }
 }
 
 function starttimers() {
     setInterval(function () {
-        var pausebutton = document.getElementById("pause");
-        var decrement = pausebutton.getAttribute("value") === "Resume" ? 0 : 1;
-        var progresses = document.getElementsByTagName("progress");
+        var decrement = ispaused() ? 0 : 1;
+        var progresses = getMeters(document);
         var len = progresses.length;
         for (var i = 0; i < len; i++) {
             var p = progresses[i];
-            var ps = document.getElementById("ps_" + p.id);
-            var value = p.getAttribute("value");
+            var value = getValue(p);
             if (value > 0) {
-                cleartable(ps);
-                p.setAttribute("value", value - decrement);
-                setProgressSpanValue(ps, value - decrement);
-                if (p.getAttribute("value") == 0) {
+                var newvalue = value - decrement;
+                setValue(p, newvalue);
+                if (!newvalue) {
                     // just went to 0, play a sound effect
                     var hassound = document.getElementById("soundfx").checked ? 1 : 0;
                     var hasvoice = document.getElementById("voicefx").checked ? 1 : 0;
-                    ps.setAttribute("class", "progressspan");
 
                     if (hasvoice) {
                         try {
@@ -231,7 +324,7 @@ function starttimers() {
                             var u = new SpeechSynthesisUtterance(title + " finished");
                             window.speechSynthesis.speak(u);
                         } catch (e) {
-                            // oh noes, give up
+                            // oh no, give up
                         }
                     }
                     if (hassound) {
@@ -252,8 +345,6 @@ function starttimers() {
                         );
                     }
                 }
-            } else {
-                setProgressSpanValue(ps, 0);
             }
         }
     }, 1000);

@@ -1,0 +1,870 @@
+var melodies = [
+    {
+    "notes": "WBR",
+    "examples": "Metal Bagpipe, Usurper's Growl",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack Boost (S)",
+        "combos": ["WRR"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Defense Boost (S)",
+        "combos": ["WBB"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Health Boost (S)",
+        "combos": ["RBW"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Wind Pressure Negated",
+        "combos": ["BBR"],
+        "time": [180, 240],
+        "extend": [120, 180]
+        }
+    ]
+    },
+    {
+    "notes": "WRC",
+    "examples": "Hunter's Horn, Danger Call",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack Boost (S)",
+        "combos": ["WRR"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Heat Cancel",
+        "combos": ["RRC"],
+        "time": [240, 300]
+        },
+        {
+        "name": "Cold Cancel",
+        "combos": ["CRC"],
+        "time": [240, 300]
+        },
+        {
+        "name": "Hearing Protection (S)",
+        "combos": ["CCRP"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "WRY",
+    "examples": "Kummerklang, Ice Kazoo",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack Boost (S)",
+        "combos": ["WRR"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Fire Resistance Boost (L)",
+        "combos": ["YRW"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        }
+    ]
+    },
+    {
+    "notes": "WBG",
+    "examples": "War Drum, Emperor's Speech",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Defence Boost (S)",
+        "combos": ["WBB"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Negate Stamina Use (S)",
+        "combos": ["WGB"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Wind Pressure Negated",
+        "combos": ["BBG"],
+        "time": [180, 240],
+        "extend": [120, 180]
+        },
+        {
+        "name": "Health Recovery (S)",
+        "combos": ["WGW"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Health Rec (S) and Antidote",
+        "combos": ["GBWB"],
+        "time": [0, 0]
+        }
+    ]
+    },
+    {
+    "notes": "WBC",
+    "examples": "Basarios Rock",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Defence Boost (S)",
+        "combos": ["WBB"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Psychic",
+        "combos": ["WBC"],
+        "time": [30, 60]
+        },
+        {
+        "name": "Negate Stamina Use (S)",
+        "combos": ["WCB"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Wind Pressure Negated",
+        "combos": ["BBC"],
+        "time": [180, 240],
+        "extend": [120, 180]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "WBY",
+    "examples": "Valkyrie Chordmaker",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Defence Boost (S)",
+        "combos": ["WBB"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Negate Stamina Use (S)",
+        "combos": ["WYB"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Ice Resistance Boost (L)",
+        "combos": ["YBW"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        }
+    ]
+    },
+    {
+    "notes": "WGC",
+    "examples": "Kecha Whappa",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Health Recovery (S)",
+        "combos": ["WGW"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Health Rec (M) and Deodorant",
+        "combos": ["GWCG"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Hearing Protection (S)",
+        "combos": ["CCGP"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "WYG",
+    "examples": "Khezu Horn, Vicello Nulo",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Health Recovery (S)",
+        "combos": ["WGW"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Recovery Speed Up (S)",
+        "combos": ["GGYW"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Thunder Resistance Boost (S)",
+        "combos": ["YGW"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        }
+    ]
+    },
+    {
+    "notes": "WYC",
+    "examples": "Dios Bell",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["WW"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Dragon Resistance Boost (S)",
+        "combos": ["WYC"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Water Resistance Boost (S)",
+        "combos": ["YCW"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Elemental Attack Boost",
+        "combos": ["YCYC"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Tremor Resistance",
+        "combos": ["CCY"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Negate Paralysis",
+        "combos": ["CYW"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "PBO",
+    "examples": "Maqam Sedition, Daora's Baphophone",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack and Defence Boost (S)",
+        "combos": ["OBPB", "PBOO"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Defence Boost (L)",
+        "combos": ["PBBP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Negate Stamina Use (L)",
+        "combos": ["POBO"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Wind Pressure Negated",
+        "combos": ["BBO"],
+        "time": [180, 240],
+        "extend": [120, 180]
+        }
+    ]
+    },
+    {
+    "notes": "PRC",
+    "examples": "Dancing Grisdrum, Naja Alluvion",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack Boost (L)",
+        "combos": ["PRCP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Heat Cancel",
+        "combos": ["RRC"],
+        "time": [240, 300]
+        },
+        {
+        "name": "Cold Cancel",
+        "combos": ["CRC"],
+        "time": [240, 300]
+        },
+        {
+        "name": "Hearing Protection (S)",
+        "combos": ["CCRP"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "PBC",
+    "examples": "Conflagrig, Lullaby Facemelter",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Defence Boost (L)",
+        "combos": ["PBBP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Psychic",
+        "combos": ["PBC"],
+        "time": [30, 60]
+        },
+        {
+        "name": "Negate Stamina Use (L)",
+        "combos": ["PCBC"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Wind Pressure Negated",
+        "combos": ["BBC"],
+        "time": [180, 240],
+        "extend": [120, 180]
+        },
+        {
+        "name": "Negate Stun",
+        "combos": ["BBP"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "PBR",
+    "examples": "Rinforzato, Hunter Master, Onyx Terpsichore",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack Boost (L)",
+        "combos": ["PRBP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Defence Boost (L)",
+        "combos": ["PBBP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Health Boost (L)",
+        "combos": ["RBRP"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Wind Pressure Negated",
+        "combos": ["BBR"],
+        "time": [180, 240],
+        "extend": [120, 180]
+        }
+    ]
+    },
+    {
+    "notes": "PBY",
+    "examples": "Lunar Chordmaker",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Defence Boost (L)",
+        "combos": ["PBBP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Negate Stamina Use (L)",
+        "combos": ["PYB"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "All Wind Pressure Negated",
+        "combos": ["BBYP"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Ice Resistance Boost (L)",
+        "combos": ["YBP"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        }
+    ]
+    },
+    {
+    "notes": "PCO",
+    "examples": "Teostra's, Genie's Ocarina",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Divine Protection",
+        "combos": ["POPC"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Abnormal Status Negated",
+        "combos": ["CPOO"],
+        "time": [120, 150],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Status Attack Boost",
+        "combos": ["COOP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "PGC",
+    "examples": "Kecha Clanvira",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Health Recovery (S)",
+        "combos": ["PGP"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Health Recovery (L)",
+        "combos": ["GGPC"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Hearing Protection (L)",
+        "combos": ["CCGP"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "PBG",
+    "examples": "Primal Conga",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Defence Boost (L)",
+        "combos": ["PBBP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Health Recovery (S)",
+        "combos": ["PGP"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Negate Stamina Use (L)",
+        "combos": ["PGBG"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Wind Pressure Negated",
+        "combos": ["BBG"],
+        "time": [180, 240],
+        "extend": [120, 180]
+        },
+        {
+        "name": "Health Rec (M) and Antidote",
+        "combos": ["GBPB"],
+        "time": [0, 0]
+        }
+    ]
+    },
+    {
+    "notes": "PRG",
+    "examples": "Stygian Tristitia, Klick-Klack",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack Boost (L)",
+        "combos": ["PRGP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Health Recovery (S)",
+        "combos": ["PGP"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Recovery Speed Up (L)",
+        "combos": ["GGRP"],
+        "time": [120, 150]
+        }
+    ]
+    },
+    {
+    "notes": "PRY",
+    "examples": "Phenomenal Phlute, Garuga Shamisen",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack Boost (S)",
+        "combos": ["PRY", "RYP", "YPR"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Fire Resistance Boost (L)",
+        "combos": ["YRP"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        }
+    ]
+    },
+    {
+    "notes": "PYC",
+    "examples": "Lightbreak Timbre",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Dragon Resistance Boost (L)",
+        "combos": ["PYC"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Water Resistance Boost (L)",
+        "combos": ["YCP"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Elemental Attack Boost",
+        "combos": ["YCYC"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Snow/Mud Negated",
+        "combos": ["CCC"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Tremor Resistance",
+        "combos": ["CCY"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Negate Paralysis",
+        "combos": ["CYP"],
+        "time": [180, 240]
+        }
+    ]
+    },
+    {
+    "notes": "PYG",
+    "examples": "Brute Flute, Aria Rhota, Handmade Frog",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Health Recovery (S)",
+        "combos": ["PGP"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Elemental Attack Boost",
+        "combos": ["PGYG"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Divine Protection",
+        "combos": ["GYPY"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Recovery Speed Up (S)",
+        "combos": ["GGY"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Thunder Resistance Boost (L)",
+        "combos": ["YGP"],
+        "time": [120, 150]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        }
+    ]
+    },
+    {
+    "notes": "PYO",
+    "examples": "Le Grégorien, Ukanlos, Fatalis M.Soul",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Hearing Protection (S) Wind Pressure Negated",
+        "combos": ["PYOY"],
+        "time": [180, 240]
+        },
+        {
+        "name": "Elemental Attack Boost",
+        "combos": ["POYO"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Sonic Waves",
+        "combos": ["YYY"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Blight Resistance Boost",
+        "combos": ["POP"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Blights Negated",
+        "combos": ["OYYO"],
+        "time": [120, 150]
+        }
+    ]
+    },
+    {
+    "notes": "PRO",
+    "examples": "Denden Doomsounder, Fatalis Menace Lute",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Attack Boost (L)",
+        "combos": ["POOR"],
+        "time": [90, 120],
+        "extend": [60, 90]
+        },
+        {
+        "name": "Knockback Protection",
+        "combos": ["ROOP"],
+        "time": [45, 60]
+        },
+        {
+        "name": "Melody Duration Extended",
+        "combos": ["ORO"],
+        "time": [30, 40]
+        }
+    ]
+    },
+    {
+    "notes": "POG",
+    "examples": "Bloodied Dalamadur, Grimm/Joie",
+    "songs": [
+        {
+        "name": "Self Improvement",
+        "combos": ["PP"],
+        "time": [180, 240],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Health Recovery (S)",
+        "combos": ["PGP"],
+        "time": [0, 0]
+        },
+        {
+        "name": "Health Rec (S) and Affinity Bonus",
+        "combos": ["GOPO"],
+        "time": [120, 150],
+        "extend": [90, 120]
+        },
+        {
+        "name": "Hearing Protection (L)",
+        "combos": ["OOGP"],
+        "time": [180, 240]
+        }
+    ]
+    }
+];
