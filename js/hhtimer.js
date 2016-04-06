@@ -258,6 +258,7 @@ function showdata() {
         // create a button for this one.
         var li = document.createElement("li");
         var inner = document.createElement("a");
+        inner.setAttribute("href", "#");
         li.setAttribute("id", notes);
         appendcolourednotes(inner, notes);
         inner.appendChild(document.createTextNode(" " + examples));
