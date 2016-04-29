@@ -66,6 +66,10 @@
             <div class="tab-pane" id="options">
                 <p>
                 <div class="btn-group-vertical">
+                    <label for="MH4U" class="btn btn-default">
+                        <input checked type="checkbox" id="MH4U" />
+                        Use MH4U names
+                    </label>
                     <label for="tryhard" class="btn btn-default">
                         <input checked type="checkbox" id="tryhard" />
                         HR/G Melodies Only
@@ -98,6 +102,9 @@ $('#maestro').change( function() {
     maestrochange($(this));
 })
 $('#tryhard').change( function() {
+    showdata();
+})
+$('#MH4U').change( function() {
     showdata();
 })
         </script>

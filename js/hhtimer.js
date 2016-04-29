@@ -21,10 +21,10 @@ function getsongs(notes) {
     return [];
 }
 
-function getexamples(notes) {
+function getexamples(notes, ismh4u) {
     var len = melodies.length;
     for (var i = 0; i < len; i++) {
-        var examples = melodies[i].examples;
+        var examples = ismh4u ? melodies[i].examples : melodies[i].examples_mh3u;
         if (notes === melodies[i].notes)
             return examples;
     }
@@ -193,11 +193,12 @@ function setSongRowTime(tr, thissong, hasmaestro) {
 
 function showtable(notes) {
     var hasmaestro = document.getElementById("maestro").checked ? 1 : 0;
+    var ismh4u = document.getElementById("MH4U").checked ? 1 : 0;
     var tbody = document.getElementById("maintable");
     cleartable(tbody);
     var currsel = document.getElementById("currentselection");
     cleartable(currsel);
-    var examples = getexamples(notes);
+    var examples = getexamples(notes, ismh4u);
     appendcolourednotes(currsel, notes);
     var caret = document.createElement("span");
     caret.setAttribute("class", "caret");
@@ -249,10 +250,11 @@ function showdata() {
     var ul = select.getElementsByClassName("dropdown-menu")[0];
     cleartable(ul);
     var tryhardonly = document.getElementById("tryhard").checked ? 1 : 0;
+    var ismh4u = document.getElementById("MH4U").checked ? 1 : 0;
     for (var i = 0; i < len; i++) {
         var notes = melodies[i].notes;
         var songs = melodies[i].songs;
-        var examples = melodies[i].examples;
+        var examples = ismh4u ? melodies[i].examples : melodies[i].examples_mh3u;
         if (tryhardonly && notes[0] === "W")
             continue;
         // create a button for this one.

@@ -2,6 +2,7 @@ var melodies = [
     {
     "notes": "WBR",
     "examples": "Metal Bagpipe, Usurper's Growl",
+    "examples_mh3u": "Metal Bagpipe, Rinforzato",
     "songs": [
         {
         "name": "Self Improvement",
@@ -37,6 +38,7 @@ var melodies = [
     {
     "notes": "WRC",
     "examples": "Hunter's Horn, Danger Call",
+    "examples_mh3u": "Bariguiro",
     "songs": [
         {
         "name": "Self Improvement",
@@ -75,6 +77,7 @@ var melodies = [
     {
     "notes": "WRY",
     "examples": "Kummerklang, Ice Kazoo",
+    "examples_mh3u": "Zurogong Primo",
     "songs": [
         {
         "name": "Self Improvement",
@@ -103,6 +106,7 @@ var melodies = [
     {
     "notes": "WBG",
     "examples": "War Drum, Emperor's Speech",
+    "examples_mh3u": "Droth Drone",
     "songs": [
         {
         "name": "Self Improvement",
@@ -143,6 +147,7 @@ var melodies = [
     {
     "notes": "WBC",
     "examples": "Basarios Rock",
+    "examples_mh3u": "Lagia Horn, Cindervone",
     "songs": [
         {
         "name": "Self Improvement",
@@ -183,6 +188,7 @@ var melodies = [
     {
     "notes": "WBY",
     "examples": "Valkyrie Chordmaker",
+    "examples_mh3u": "Valkyrie Chordmaker",
     "songs": [
         {
         "name": "Self Improvement",
@@ -217,6 +223,7 @@ var melodies = [
     {
     "notes": "WGC",
     "examples": "Kecha Whappa",
+    "examples_mh3u": "Qurupeco Horn",
     "songs": [
         {
         "name": "Self Improvement",
@@ -249,6 +256,7 @@ var melodies = [
     {
     "notes": "WYG",
     "examples": "Khezu Horn, Vicello Nulo",
+    "examples_mh3u": "Vicello Nulo",
     "songs": [
         {
         "name": "Self Improvement",
@@ -281,6 +289,7 @@ var melodies = [
     {
     "notes": "WYC",
     "examples": "Dios Bell",
+    "examples_mh3u": "Magia Charm",
     "songs": [
         {
         "name": "Self Improvement",
@@ -329,6 +338,7 @@ var melodies = [
     {
     "notes": "PBO",
     "examples": "Maqam Sedition, Daora's Baphophone",
+    "examples_mh3u": "Nether Sinphony",
     "songs": [
         {
         "name": "Self Improvement",
@@ -365,6 +375,7 @@ var melodies = [
     {
     "notes": "PRC",
     "examples": "Dancing Grisdrum, Naja Alluvion",
+    "examples_mh3u": "Archgigas Gaita, Frigiguiro",
     "songs": [
         {
         "name": "Self Improvement",
@@ -403,6 +414,7 @@ var melodies = [
     {
     "notes": "PBC",
     "examples": "Conflagrig, Lullaby Facemelter",
+    "examples_mh3u": "Meltrovone",
     "songs": [
         {
         "name": "Self Improvement",
@@ -448,6 +460,7 @@ var melodies = [
     {
     "notes": "PBR",
     "examples": "Rinforzato, Hunter Master, Onyx Terpsichore",
+    "examples_mh3u": "Rinforzato, Cry in the Night",
     "songs": [
         {
         "name": "Self Improvement",
@@ -483,6 +496,7 @@ var melodies = [
     {
     "notes": "PBY",
     "examples": "Lunar Chordmaker",
+    "examples_mh3u": "Turban Shell, Coral Chordmaker",
     "songs": [
         {
         "name": "Self Improvement",
@@ -522,6 +536,7 @@ var melodies = [
     {
     "notes": "PCO",
     "examples": "Teostra's, Genie's Ocarina",
+    "examples_mh3u": "Lunar Chordmaker",
     "songs": [
         {
         "name": "Self Improvement",
@@ -556,6 +571,7 @@ var melodies = [
     {
     "notes": "PGC",
     "examples": "Kecha Clanvira",
+    "examples_mh3u": "Soldier's Snarfonica, Imperilude",
     "songs": [
         {
         "name": "Self Improvement",
@@ -588,6 +604,7 @@ var melodies = [
     {
     "notes": "PBG",
     "examples": "Primal Conga",
+    "examples_mh3u": "Darkest Coffin, Bloodfreezer",
     "songs": [
         {
         "name": "Self Improvement",
@@ -628,6 +645,7 @@ var melodies = [
     {
     "notes": "PRG",
     "examples": "Stygian Tristitia, Klick-Klack",
+    "examples_mh3u": "Sandsoother",
     "songs": [
         {
         "name": "Self Improvement",
@@ -656,6 +674,7 @@ var melodies = [
     {
     "notes": "PRY",
     "examples": "Phenomenal Phlute, Garuga Shamisen",
+    "examples_mh3u": "Frost General, Scaldertina",
     "songs": [
         {
         "name": "Self Improvement",
@@ -684,6 +703,7 @@ var melodies = [
     {
     "notes": "PYC",
     "examples": "Lightbreak Timbre",
+    "examples_mh3u": "Aria Rhota",
     "songs": [
         {
         "name": "Self Improvement",
@@ -732,6 +752,7 @@ var melodies = [
     {
     "notes": "PYG",
     "examples": "Brute Flute, Aria Rhota, Handmade Frog",
+    "examples_mh3u": "Vicello Du, Vicello Tri",
     "songs": [
         {
         "name": "Self Improvement",
@@ -775,6 +796,7 @@ var melodies = [
     {
     "notes": "PYO",
     "examples": "Le Grégorien, Ukanlos, Fatalis M.Soul",
+    "examples_mh3u": "The Apocalypso",
     "songs": [
         {
         "name": "Self Improvement",
@@ -814,6 +836,7 @@ var melodies = [
     {
     "notes": "PRO",
     "examples": "Denden Doomsounder, Fatalis Menace Lute",
+    "examples_mh3u": "Stygian Tristitia",
     "songs": [
         {
         "name": "Self Improvement",
@@ -842,6 +865,7 @@ var melodies = [
     {
     "notes": "POG",
     "examples": "Bloodied Dalamadur, Grimm/Joie",
+    "examples_mh3u": "Eternal Music Box, Timbral Demolisher, Eclipse Tone",
     "songs": [
         {
         "name": "Self Improvement",
